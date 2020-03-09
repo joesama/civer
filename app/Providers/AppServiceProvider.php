@@ -25,12 +25,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $app = app();
+
+        $memory = $app->make('orchestra.memory')->make();
+
+        $locale = $app->getLocale();
+
         Inertia::share([
-            'locale' => function () {
-                return app()->getLocale();
+            'locale' => function () use ($locale) {
+                return $locale;
             },
-            'language' => function () {
-                return translations(app()->getLocale());
+            'language' => function () use ($locale) {
+                return translations($locale);
             },
             'nav' => function () {
                 if (Auth::check()) {
@@ -41,11 +47,11 @@ class AppServiceProvider extends ServiceProvider
                     return null;
                 }
             },
-            'site' => function () {
+            'site' => function () use ($memory) {
                 return [
-                        'name' => 'CIVER',
+                        'name' => $memory->get('site.name', 'CIVER'),
                         'welcome' => 'general.welcome',
-                        'logo' => '/images/CIVER.png'
+                        'logo' => $memory->get('site.logo')
                     ];
             }
         ]);

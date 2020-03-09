@@ -4,11 +4,25 @@ namespace App\Services;
 
 class Translations
 {
+    /**
+     * Locale
+     *
+     * @var string
+     */
     private $locale;
+
+    /**
+     * Fallback locale
+     *
+     * @var string
+     */
+    private $fallback;
 
     public function __construct($lang)
     {
         $this->locale = $lang;
+
+        $this->fallback = config('app.fallback_locale');
     }
 
     private function getAllTransalationFiles()

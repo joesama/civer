@@ -16,9 +16,13 @@ use Illuminate\Routing\Router;
 $router->middleware('web')
     ->group(function (Router $router) {
         $router->get('/', 'WelcomeController');
+        $router->get('/setup', 'SetupController@index');
         $router->get('/login', 'WelcomeController');
         $router->get('/home', 'HomeController')->name('home');
+        $router->post('/setup', 'SetupController@setup')->name('setup');
         $router->post('/login', 'Auth\LoginController@login')->name('login');
-        $router->post('/logout', 'Auth\LoginController@logout')->name('logout');
-        // $router->get('/access', 'Auth\LoginController@access')->name('access');
+        $router->middleware('auth')->group(function (Router $router) {
+            $router->post('/logout', 'Auth\LoginController@logout')->name('logout');
+            $router->get('/access', 'Auth\LoginController@access')->name('access');
+        });
     });
