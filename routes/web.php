@@ -15,14 +15,26 @@ use Illuminate\Routing\Router;
 
 $router->middleware('web')
     ->group(function (Router $router) {
-        $router->get('/', 'WelcomeController');
+        $router->get('/', function () use ($router) {
+            $memory = app()->make('orchestra.memory')->make();
+
+            if ($memory->get('site') === null) {
+                return redirect(route('setup'));
+            }
+
+            return redirect(route('welcome'));
+        });
         $router->get('/setup', 'SetupController@index');
-        $router->get('/login', 'WelcomeController');
+        $router->get('/login', 'WelcomeController')->name('welcome');
         $router->get('/home', 'HomeController')->name('home');
         $router->post('/setup', 'SetupController@setup')->name('setup');
         $router->post('/login', 'Auth\LoginController@login')->name('login');
-        $router->middleware('auth')->group(function (Router $router) {
+        $router->middleware('web')->group(function (Router $router) {
             $router->post('/logout', 'Auth\LoginController@logout')->name('logout');
             $router->get('/access', 'Auth\LoginController@access')->name('access');
+            $router->get('/acl', 'Auth\AccessControlController@index')->name('acl');
+            $router->post('/acl/save', 'Auth\AccessControlController@save')->name('acl.save');
+            $router->get('/config', 'Settings\ApplicationController@index')->name('config');
+            $router->post('/config/save', 'Settings\ApplicationController@saveAppInfo')->name('config.save');
         });
     });

@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+.civer {
+    @apply font-mono;
+}
+.civer-login-img{
+    @apply object-center; 
+    @apply object-cover; 
+    @apply h-full;
+    @apply w-full; 
+    @apply rounded-l-lg;
+}
+.civer-login-logo{
+    @apply object-center; 
+    @apply object-cover; 
+    @apply m-auto;
+}
+.civer-form-grid{
+    @apply grid; 
+    @apply grid-cols-3; 
+    @apply row-gap-0
+}
+.civer-form-desc{
+    @apply w-full; 
+    @apply leading-loose; 
+    @apply bg-gray-300; 
+    @apply px-4;
+    @apply py-1;
+    @apply border-l;
+    @apply border-gray-800;
+    @apply font-medium;
+}
+.civer-form-input{
+    @apply col-span-2; 
+    @apply px-1; 
+    @apply py-1;
+    @apply border-r;
+    @apply border-gray-800;
+}
+.civer-form-divider{
+    @apply w-full;
+    @apply leading-loose;
+    @apply col-span-3;
+    @apply bg-gray-800;
+    @apply text-white;
+    @apply px-4; 
+    @apply py-1;
+}
+.civer-form-footer{
+    @apply w-full;
+    @apply leading-loose;
+    @apply col-span-3;
+    @apply text-white;
+    @apply p-1;
+    @apply border-l;
+    @apply border-r;
+    @apply border-b;
+    @apply border-gray-800;
+    @apply rounded-b-lg;
+}
+.gradient-blue {
+    background: linear-gradient(180deg, #14307d 75%, rgb(245, 184, 16) 100%);
+}
+
+.bg-civer-blue {
+    background-color: #14307d;
+    color: azure;
+}
+
+.bg-civer-dark-blue {
+    background-color: #050f2b;
+    color: azure;
+}
+.bg-civer-gold {
+    background-color: rgb(245, 184, 16);
+    color: #050f2b;
+}
+.bg-civer-blue:hover, .bg-civer-blue:active, .bg-civer-blue:focus {
+    @apply civer-gold;
+}
+.civer-gold {
+    color: rgb(245, 184, 16);
+}
+.civer-blue {
+    color: #14307d
+}
+.civer-dark-blue {
+    color: #050f2b
+}
+.civer-gray {
+    color: #222217
+}
+.border-gold {
+    border-color: rgb(245, 184, 16);
+}
+.border-blue {
+    border-color: #14307d
+}
+.border-gray {
+    border-color: #222217
+}
+.logo-civer {
+    @apply border-4;
+    @apply rounded-full; 
+    @apply border-gold;
+}
+
+@tailwind utilities;

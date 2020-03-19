@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Services\Setup;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class SetupController extends Controller
 {
@@ -36,8 +37,6 @@ class SetupController extends Controller
 
         $serviceSetup->initiateSetup();
 
-        return Inertia::render('Setup', [
-            'system' => $serviceSetup->siteSetup(),
-        ]);
+        return Redirect::route('login');
     }
 }

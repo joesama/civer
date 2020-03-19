@@ -18,7 +18,15 @@ return [
             'info' => 'Administration Info',
             'name' => 'Admin Name',
             'email' => 'Admin Email'
+        ],
+        'app' => [
+            'info' => 'Application Setup',
+            'logo' => 'Application Logo',
+            'login' => 'Login Image'
         ]
+    ],
+    'acl' => [
+        'syn' => 'Sync ACL'
     ],
     'button' => [
         'save' => 'Save',

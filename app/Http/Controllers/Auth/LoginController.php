@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use LdapRecord\Laravel\Auth\ListensForLdapBindFailure;
 
 class LoginController extends Controller
 {
@@ -19,7 +21,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, ListensForLdapBindFailure;
 
     /**
      * Where to redirect users after login.
@@ -36,6 +38,33 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return [
+            'mail' => $request->get('email'),
+            'password' => $request->get('password'),
+        ];
+    }
+
+    /**
+     * Handle the LDAP bind error.
+     *
+     * @param string $message
+     * @param string $code
+     *
+     * @throws ValidationException
+     */
+    protected function handleLdapBindError($message, $code = null)
+    {
+        $this->throwLoginValidationException($message);
     }
 
     public function access()

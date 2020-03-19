@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\Models\User;
+use LdapRecord\Models\ActiveDirectory\User;
 
 return [
 
@@ -40,7 +40,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'ldap',
         ],
 
         'api' => [
@@ -70,9 +70,22 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => User::class,
+            'model' => App\Data\Models\User::class,
         ],
 
+        'ldap' => [
+            'driver' => 'ldap',
+            'model' => User::class,
+            'database' => [
+                'model' => App\Data\Models\User::class,
+                'sync_passwords' => false,
+                'sync_attributes' => [
+                    'name' => 'cn',
+                    'email' => 'mail',
+                    'username' => 'samaccountname',
+                ],
+            ],
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

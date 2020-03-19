@@ -1,15 +1,20 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Support\Facades\Storage;
 use Orchestra\Support\Facades\Memory;
 
 class Setup
 {
     const LOGO = '/images/CIVER.png';
 
+    const LOGIN = '/images/login_left.png';
+
     const SITE = 'site';
 
     protected $setup;
+
+    protected $momory;
 
     /**
      * Setup Services Constructor.
@@ -19,6 +24,8 @@ class Setup
     public function __construct(array $setupParameter)
     {
         $this->setup = $setupParameter;
+
+        $this->memory = $this->getMemoryProvider();
     }
     /**
      * Initiate Setup Process.
@@ -27,17 +34,63 @@ class Setup
      */
     public function initiateSetup()
     {
-        $memory = $this->getMemoryProvider();
-
         foreach ($this->setup as $key => $value) {
-            $memory->put(self::SITE .'.'. $key, $value);
+            $this->memory->put(self::SITE .'.'. $key, $value);
         }
 
-        $memory->put(self::SITE .'.logo', self::LOGO);
+        $this->memory->put(self::SITE .'.logo.url', self::LOGO);
+
+        $this->memory->put(self::SITE .'.login.url', self::LOGIN);
     }
 
     /**
-     * Preview Site Setup Information.
+     * Update site setup information.
+     *
+     * @return void
+     */
+    public function updateSetup()
+    {
+        collect($this->setup)->except(['logo', 'login'])->each(function ($value, $key) {
+            $this->memory->put(self::SITE .'.'. $key, $value);
+        });
+    }
+
+    /**
+     * Upload images for site configs.
+     *
+     * @param array $files
+     *
+     * @return void
+     */
+    public function uploadSiteImages(array $files)
+    {
+        $folder = 'images';
+
+        foreach ($files as $key => $uploadedFile) {
+            $filename = 'app_'. $key . '.' . $uploadedFile->extension();
+
+            $fileUploaded = Storage::putFileAs(
+                $folder,
+                $uploadedFile,
+                $filename
+            );
+
+            $publicPath = 'images/sites/';
+
+            if (!\is_dir($newDir = \public_path($publicPath))) {
+                mkdir($newDir);
+            }
+
+            copy(storage_path('app/'). $fileUploaded, $newDir.$filename);
+
+            $this->memory->put(self::SITE .'.'.$key.'.url', $publicPath.$filename);
+
+            $this->memory->put(self::SITE .'.'.$key.'.path', $fileUploaded);
+        }
+    }
+
+    /**
+     * Get Site Setup Information.
      *
      * @return void
      */

@@ -20,8 +20,8 @@ mix.options({
     }
 });
 
-mix.js('resources/assets/scripts/app.js', 'public/js/app.js')
-.postCss('resources/assets/styles/tailwind.css', 'public/css/app.css')
+mix.js('resources/source/scripts/app.js', 'public/js/civer.js')
+.postCss('resources/source/styles/tailwind.css', 'public/css/civer.css')
 .tailwind('tailwind.config.js')
 .webpackConfig({
     output: { chunkFilename: 'js/chunck/[name].[contenthash].js' },

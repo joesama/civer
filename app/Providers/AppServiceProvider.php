@@ -44,15 +44,25 @@ class AppServiceProvider extends ServiceProvider
                         'user' => Auth::user()
                     ];
                 } else {
-                    return null;
+                    return [
+                        'user' => [
+                            'fullname' => 'ALI'
+                        ]
+                    ];
                 }
             },
             'site' => function () use ($memory) {
                 return [
                         'name' => $memory->get('site.name', 'CIVER'),
                         'welcome' => 'general.welcome',
-                        'logo' => $memory->get('site.logo')
+                        'logo' => asset($memory->get('site.logo.url')),
+                        'login' => asset($memory->get('site.login.url'))
                     ];
+            },
+            'errors' => function () {
+                return session()->get('errors') ?
+                session()->get('errors')->getBag('default')->getMessages() :
+                (object)[];
             }
         ]);
     }
