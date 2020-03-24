@@ -15,21 +15,28 @@ use Illuminate\Routing\Router;
 
 $router->middleware('web')
     ->group(function (Router $router) {
-        $router->get('/', function () use ($router) {
-            $memory = app()->make('orchestra.memory')->make();
+        $router->middleware('guest')->group(function (Router $router) {
+            $router->get('/', function () use ($router) {
+                try {
+                    $memory = app()->make('orchestra.memory')->make();
 
-            if ($memory->get('site') === null) {
-                return redirect(route('setup'));
-            }
+                    if ($memory->get('site') === null) {
+                        return redirect(route('setup'));
+                    }
+                } catch (Exception $exception){
+                    return view('welcome');
+                }
 
-            return redirect(route('welcome'));
+                return redirect(route('welcome'));
+            });
+            $router->get('/setup', 'SetupController@index');
+            $router->get('/login', 'WelcomeController')->name('welcome');
+            $router->post('/setup', 'SetupController@setup')->name('setup');
+            $router->post('/login', 'Auth\LoginController@login')->name('login');
         });
-        $router->get('/setup', 'SetupController@index');
-        $router->get('/login', 'WelcomeController')->name('welcome');
-        $router->get('/home', 'HomeController')->name('home');
-        $router->post('/setup', 'SetupController@setup')->name('setup');
-        $router->post('/login', 'Auth\LoginController@login')->name('login');
-        $router->middleware('web')->group(function (Router $router) {
+
+        $router->middleware('auth')->group(function (Router $router) {
+            $router->get('/home', 'HomeController')->name('home');
             $router->post('/logout', 'Auth\LoginController@logout')->name('logout');
             $router->get('/access', 'Auth\LoginController@access')->name('access');
             $router->get('/acl', 'Auth\AccessControlController@index')->name('acl');

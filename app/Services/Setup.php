@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Support\Facades\Memory;
 
@@ -14,7 +15,7 @@ class Setup
 
     protected $setup;
 
-    protected $momory;
+    protected $memory;
 
     /**
      * Setup Services Constructor.
@@ -25,7 +26,11 @@ class Setup
     {
         $this->setup = $setupParameter;
 
-        $this->memory = $this->getMemoryProvider();
+        try {
+            $this->memory = $this->getMemoryProvider();
+        } catch (Exception $exception) {
+            return redirect('/');
+        }
     }
     /**
      * Initiate Setup Process.

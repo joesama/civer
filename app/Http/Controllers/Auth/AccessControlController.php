@@ -2,8 +2,9 @@
 namespace App\Http\Controllers\Auth;
 
 use Inertia\Inertia;
+use App\Http\Controllers\Controller;
 
-class AccessControlController
+class AccessControlController extends Controller
 {
     /**
      * Create a new controller instance.

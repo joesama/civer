@@ -1,98 +1,32 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <link href="{{ mix('/css/civer.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+        <script src="{{ mix('/js/civer.js') }}" defer></script>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <div class="gradient-blue civer h-screen w-screen">
+            <div class="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
+                <div class="block rounded-lg outline-no shadow-lg w-3/4 bg-white py-8">
+                    <div class="flex font-medium subpixel-antialiased tracking-wider leading-tight text-center mx-6 mb-6 font-bold">
+                        <img src="/images/CIVER.png" class="object-contain"/>
+                        <div class="w-3/6 text-base font-mono font-hairline mt-4 m-auto">
+                            <ul class="list-disc p-4 text-left">
+                                <li class="my-4">
+                                    Run <code class="bg-gray-900 text-white p-2 rounded-lg">composer pre-setup-civer</code> 
+                                </li>
+                                <li  class="my-4">
+                                    Update configuration file
+                                </li>
+                                <li  class="my-4">
+                                    Run <code class="bg-gray-900 text-white p-2 rounded-lg">php artisan migrate</code> 
+                                </li>                         
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
