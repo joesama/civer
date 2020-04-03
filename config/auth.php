@@ -83,7 +83,7 @@ return [
                 'sync_attributes' => [
                     'name' => 'cn',
                     'email' => 'mail',
-                    'username' => 'samaccountname',
+                    'username' => env('CIVER_USERNAME', 'samaaccount'),
                 ],
             ],
         ],
@@ -100,7 +100,7 @@ return [
                 'sync_attributes' => [
                     'name' => 'cn',
                     'email' => 'mail',
-                    'username' => 'samaccountname',
+                    'username' => env('CIVER_USERNAME', 'samaaccount'),
                 ],
             ],
         ],

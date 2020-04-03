@@ -23,8 +23,8 @@ $router->middleware('web')
                     if ($memory->get('site') === null) {
                         return redirect(route('setup'));
                     }
-                } catch (Exception $exception){
-                    return view('welcome');
+                } catch (Exception $exception) {
+                    return view('welcome', ['error' => $exception]);
                 }
 
                 return redirect(route('welcome'));

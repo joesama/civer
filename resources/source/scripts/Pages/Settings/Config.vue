@@ -1,6 +1,5 @@
 <template>
   <layout>
-    <div class="p-2">
       <form
         class="form-horizontal w-full"
         method="POST"
@@ -67,12 +66,11 @@
               v-bind:files="setup.login"
             />
           </div>
-          <div class="civer-form-footer">
+          <div class="civer-form-footer civer-form-last">
             <form-button btn-icon-right="save" btn-label="input.button.save" />
           </div>
         </div>
       </form>
-    </div>
   </layout>
 </template>
 
@@ -161,7 +159,7 @@ export default {
       data.append("logo", this.logo);
       data.append("login", this.login);
 
-      this.$inertia.post("/config/save", data).then();
+      this.$inertia.post("/config/save", data);
 
       this.logo = null;
       this.login = null;

@@ -3,6 +3,37 @@
 .civer {
     @apply font-mono;
 }
+
+.civer-info-grid{
+    @apply grid; 
+    @apply grid-cols-2; 
+    @apply row-gap-0
+}
+
+.civer-info-divider{
+    @apply w-full;
+    @apply leading-loose;
+    @apply col-span-2;
+    @apply bg-civer-dark-blue;
+    @apply text-white;
+    @apply p-1;
+    @apply pl-3;
+}
+
+.civer-info-label{
+    @apply text-sm;
+    @apply bg-gray-300; 
+    @apply p-1;
+    @apply font-medium;
+    @apply pl-3;
+}
+
+.civer-info-desc{
+    @apply text-sm;
+    @apply p-1;
+    @apply pl-3;
+}
+
 .civer-login-img{
     @apply object-center; 
     @apply object-cover; 
@@ -10,16 +41,19 @@
     @apply w-full; 
     @apply rounded-l-lg;
 }
+
 .civer-login-logo{
     @apply object-center; 
     @apply object-cover; 
     @apply m-auto;
 }
+
 .civer-form-grid{
     @apply grid; 
     @apply grid-cols-3; 
     @apply row-gap-0
 }
+
 .civer-form-desc{
     @apply w-full; 
     @apply leading-loose; 
@@ -30,6 +64,7 @@
     @apply border-gray-800;
     @apply font-medium;
 }
+
 .civer-form-input{
     @apply col-span-2; 
     @apply px-1; 
@@ -37,27 +72,35 @@
     @apply border-r;
     @apply border-gray-800;
 }
+
 .civer-form-divider{
     @apply w-full;
     @apply leading-loose;
     @apply col-span-3;
-    @apply bg-gray-800;
+    @apply bg-civer-dark-blue;
     @apply text-white;
     @apply px-4; 
     @apply py-1;
 }
-.civer-form-footer{
-    @apply w-full;
-    @apply leading-loose;
+
+.civer-form-last{
+    @apply bg-civer-dark-blue;
     @apply col-span-3;
-    @apply text-white;
-    @apply p-1;
     @apply border-l;
     @apply border-r;
     @apply border-b;
     @apply border-gray-800;
     @apply rounded-b-lg;
 }
+
+.civer-form-footer{
+    @apply w-full;
+    @apply leading-loose;
+    @apply col-span-3;
+    @apply text-white;
+    @apply p-1;
+}
+
 .gradient-blue {
     background: linear-gradient(180deg, #14307d 75%, rgb(245, 184, 16) 100%);
 }

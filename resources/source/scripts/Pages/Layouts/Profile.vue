@@ -1,6 +1,6 @@
 <template>
     <div class="relative hidden sm:flex items-center">
-        <div class="civer-gold font-hairline">{{ $page.nav.user.fullname }}</div>
+        <div class="civer-gold font-hairline">{{ $page.nav.user.name }}</div>
         <button @click="isOpen = !isOpen" >
         <div
             class="mx-2 h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none hover:border-white focus:border-white"
@@ -8,7 +8,7 @@
             <img
                 class="h-full w-full object-cover"
                 :src="image"
-                :alt="$page.nav.user.fullname"
+                :alt="$page.nav.user.name"
             />
         </div>
         </button>
