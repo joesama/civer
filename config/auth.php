@@ -1,7 +1,5 @@
 <?php
 
-use LdapRecord\Models\ActiveDirectory\User;
-
 return [
 
     /*
@@ -40,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'ldap',
+            'provider' => env('CIVER_GUARD', 'user'),
         ],
 
         'api' => [
@@ -72,10 +70,13 @@ return [
             'driver' => 'eloquent',
             'model' => App\Data\Models\User::class,
         ],
-
-        'ldap' => [
+        'openldap' => [
             'driver' => 'ldap',
-            'model' => User::class,
+            'model' => LdapRecord\Models\OpenLDAP\User::class,
+        ],
+        'openldap-db' => [
+            'driver' => 'ldap',
+            'model' => LdapRecord\Models\OpenLDAP\User::class,
             'database' => [
                 'model' => App\Data\Models\User::class,
                 'sync_passwords' => false,
@@ -86,10 +87,27 @@ return [
                 ],
             ],
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'ad' => [
+            'driver' => 'ldap',
+            'model' => LdapRecord\Models\ActiveDirectory\User::class,
+        ],
+        'ad-db' => [
+            'driver' => 'ldap',
+            'model' => LdapRecord\Models\ActiveDirectory\User::class,
+            'database' => [
+                'model' => App\Data\Models\User::class,
+                'sync_passwords' => false,
+                'sync_attributes' => [
+                    'name' => 'cn',
+                    'email' => 'mail',
+                    'username' => 'samaccountname',
+                ],
+            ],
+        ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'users',
+        ],
     ],
 
     /*

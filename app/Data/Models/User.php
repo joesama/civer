@@ -37,4 +37,24 @@ class User extends Authenticatable implements LdapAuthenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+     * The attribute field for ldap domain.
+     *
+     * @return string
+     */
+    public function getLdapDomainColumn(): string
+    {
+        return 'domain';
+    }
+
+    /**
+     * The attribute field for guid domain.
+     *
+     * @return string
+     */
+    public function getLdapGuidColumn(): string
+    {
+        return 'guid';
+    }
 }

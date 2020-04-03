@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     submit() {
-      this.$inertia.post('/login', { email: this.username,  password: this.password})
+      this.$inertia.post('/login', { username: this.username,  password: this.password})
     },
   },
 };
