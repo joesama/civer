@@ -21,6 +21,7 @@
 }
 
 .civer-info-label{
+    @apply leading-loose;
     @apply text-sm;
     @apply bg-gray-300; 
     @apply p-1;
@@ -29,6 +30,7 @@
 }
 
 .civer-info-desc{
+    @apply leading-loose;
     @apply text-sm;
     @apply p-1;
     @apply pl-3;
@@ -41,8 +43,13 @@
     @apply w-full; 
     @apply rounded-l-lg;
 }
+.civer-login-logo-container{
+    @apply p-2;
+}
 
 .civer-login-logo{
+    @apply w-48;
+    @apply h-48;
     @apply object-center; 
     @apply object-cover; 
     @apply m-auto;

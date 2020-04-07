@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Access;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -29,17 +30,11 @@ class Controller extends BaseController
                 return translations($locale);
             },
             'nav' => function () {
-                if (Auth::check()) {
-                    return [
-                        'user' => Auth::user()
-                    ];
-                } else {
-                    return [
-                        'user' => [
-                            'fullname' => 'ALI'
-                        ]
-                    ];
-                }
+                return [
+                    'user' => Auth::check() ? Auth::user() : null,
+                    'menu' => app(Access::class)->grantedTo(Auth::user()),
+                    'profile' => app(Access::class)->profileMenu()
+                ];
             },
             'site' => function () use ($memory) {
                 return [

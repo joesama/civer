@@ -1,5 +1,5 @@
 <template>
-    <div class="relative hidden sm:flex items-center">
+    <div class="relative flex items-center float-right py-1 sm:py-0">
         <div class="civer-gold font-hairline">{{ $page.nav.user.name }}</div>
         <button @click="isOpen = !isOpen" >
         <div
@@ -13,7 +13,7 @@
         </div>
         </button>
         <div :class="isOpen ? 'block' : 'hidden'" >
-            <profile-link v-bind="getTextLink()"></profile-link>
+            <profile-link v-bind:nav="$page.nav.profile" v-bind:stylus="getTextLink()"></profile-link>
         </div>
     </div>
 </template>
@@ -36,23 +36,10 @@ export default {
     methods: {
         getTextLink: function() {
             return {
-                stylus: {
-                    container: "absolute top-0 right-0  list-reset flex-1 items-center mt-12 w-48 border-2 border-t-4 border-gold",
-                    li: "py-2 px-2 bg-civer-blue"
-                },
-                nav: this.getProfileNavigation()
+                container: "absolute top-0 sm:right-0 list-reset flex-1 items-center mt-12 w-48",
+                li: "py-2 px-2 bg-civer-gold text-sm leading-tight"
             };
-        },
-        getProfileNavigation: function() {
-            return [
-                {
-                    desc: "Logout",
-                    href: "entree",
-                    method: "Register",
-                }
-            ];
         }
-
     }
 };
 </script>

@@ -10,7 +10,7 @@
         </div>
         <div class="flex flex-col w-full md:w-3/4 p-2">
           <div class="flex flex-col flex-1 justify-center mb-4">
-            <div class="w-full justify-center">
+            <div class="civer-login-logo-container">
               <img
                 v-if="$page.site.logo !== undefined"
                 :src="$page.site.logo"

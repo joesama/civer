@@ -1,7 +1,12 @@
+
+
+
+
+
 <template>
   <div class="pt-20 gradient-blue p-2 min-h-full h-auto w-full">
-    <div class="w-full h-auto min-h-full grid grid-rows-5 grid-flow-col-dense gap-4">
-      <div class="row-span-5 col-span-6 bg-white rounded-lg p-1">
+    <div class="w-full h-auto min-h-full grid sm:grid-rows-5 sm:grid-flow-col-dense gap-4">
+      <div class="hidden sm:block sm:row-span-5 sm:col-span-6 bg-white rounded-lg p-1">
         <slot />
       </div>
       <div class="row-span-1 col-span-1 bg-white rounded-lg">

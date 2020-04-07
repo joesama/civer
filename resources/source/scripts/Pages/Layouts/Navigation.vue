@@ -1,11 +1,7 @@
 <template>
   <div class="inset-x-0 top-0 fixed bg-civer-dark-blue border-gold border-b-8 sm:flex sm:justify-between sm:items-between sm:px-4 sm:py-3 w-full z-30">
-    <nav :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-4 sm:flex sm:p-0 sm:p-r-4">
-      <a href="#" class="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">List your property</a>
-      <a href="#" class="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">Trips</a>
-      <a href="#" class="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">Messages</a>
-    </nav>
-    <div class="flex-1 items-center justify-end px-4 py-3 sm:p-0">
+    <nav-link :class="isOpen ? 'block' : 'hidden'" v-bind:nav="$page.nav.menu" />
+    <div class="flex-1 items-center justify-end px-3 py-2 sm:p-0">
       <div class="sm:hidden">
         <button @click="isOpen = !isOpen" type="button" class="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
           <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
@@ -15,16 +11,18 @@
         </button>
       </div>
     </div>
-    <profile v-show="$page.nav !== null" />
+    <profile v-show="$page.nav.user !== null" />
   </div>
 </template>
 
 <script>
 import Profile from './Profile'
+import NavLink from './../Links/NavLink'
 
 export default {
   components: {
-      Profile
+      Profile,
+      NavLink
   },
   props: {},
   data() {
