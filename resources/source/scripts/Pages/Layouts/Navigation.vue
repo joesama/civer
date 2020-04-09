@@ -1,5 +1,12 @@
 <template>
   <div class="inset-x-0 top-0 fixed bg-civer-dark-blue border-gold border-b-8 sm:flex sm:justify-between sm:items-between sm:px-4 sm:py-3 w-full z-30">
+    <div style="min-width:48;max-width: 120px; max-height: 36px;" class="pr-4 text-center">
+    <img
+      v-if="$page.site.logo !== undefined"
+      :src="$page.site.logo"
+      class="object-center object-fill h-full"
+    />
+    </div>
     <nav-link :class="isOpen ? 'block' : 'hidden'" v-bind:nav="$page.nav.menu" />
     <div class="flex-1 items-center justify-end px-3 py-2 sm:p-0">
       <div class="sm:hidden">

@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use Exception;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Support\Facades\Memory;
 
@@ -58,6 +59,8 @@ class Setup
         collect($this->setup)->except(['logo', 'login'])->each(function ($value, $key) {
             $this->memory->put(self::SITE .'.'. $key, $value);
         });
+
+        Artisan::call('civer:access');
     }
 
     /**

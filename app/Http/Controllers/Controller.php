@@ -31,8 +31,8 @@ class Controller extends BaseController
             },
             'nav' => function () {
                 return [
-                    'user' => Auth::check() ? Auth::user() : null,
-                    'menu' => app(Access::class)->grantedTo(Auth::user()),
+                    'user' => Auth::user(),
+                    'menu' => app(Access::class)->grantedToUser(),
                     'profile' => app(Access::class)->profileMenu()
                 ];
             },

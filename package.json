@@ -39,6 +39,7 @@
         "filepond-plugin-file-encode": "^2.1.5",
         "filepond-plugin-file-validate-type": "^1.2.5",
         "filepond-plugin-image-preview": "^4.6.1",
+        "vue-clickaway": "^2.2.2",
         "vue-filepond": "^6.0.2"
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa716786d1e4b4169aa08d55feb99db2",
+    "content-hash": "fbce2d14e9b944f99cc184b4c28882e5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1578,6 +1578,55 @@
                 "serialize"
             ],
             "time": "2019-11-29T22:36:02+00:00"
+        },
+        {
+            "name": "orchestra/avatar",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/avatar.git",
+                "reference": "a2d212a01675946b18569efa2a0fbffc1ce19db5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/avatar/zipball/a2d212a01675946b18569efa2a0fbffc1ce19db5",
+                "reference": "a2d212a01675946b18569efa2a0fbffc1ce19db5",
+                "shasum": ""
+            },
+            "require": {
+                "orchestra/support": "^5.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Orchestra\\Avatar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "Avatar Component for Orchestra Platform",
+            "keywords": [
+                "avatar",
+                "gravatar",
+                "laravel",
+                "orchestra-platform",
+                "orchestral"
+            ],
+            "time": "2020-02-28T03:15:16+00:00"
         },
         {
             "name": "orchestra/contracts",

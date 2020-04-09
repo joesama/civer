@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Data\Models\User::class,
+            'model' => App\Data\Models\Users\User::class,
         ],
         'openldap' => [
             'driver' => 'ldap',
@@ -78,7 +78,7 @@ return [
             'driver' => 'ldap',
             'model' => LdapRecord\Models\OpenLDAP\User::class,
             'database' => [
-                'model' => App\Data\Models\User::class,
+                'model' => App\Data\Models\Users\LdapUser::class,
                 'sync_passwords' => false,
                 'sync_attributes' => [
                     'name' => 'cn',
@@ -95,7 +95,7 @@ return [
             'driver' => 'ldap',
             'model' => LdapRecord\Models\ActiveDirectory\User::class,
             'database' => [
-                'model' => App\Data\Models\User::class,
+                'model' => App\Data\Models\Users\LdapUser::class,
                 'sync_passwords' => false,
                 'sync_attributes' => [
                     'name' => 'cn',

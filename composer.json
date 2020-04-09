@@ -16,6 +16,7 @@
         "inertiajs/inertia-laravel": "^0.2.5",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "orchestra/avatar": "^5.0",
         "orchestra/memory": "5.x"
     },
     "require-dev": {
@@ -33,6 +34,9 @@
     },
     "extra": {
         "laravel": {
+            "provider": [
+                "Joesama\\Navigator\\Providers\\NavigatorServiceProvider"
+            ],
             "dont-discover": []
         }
     },
@@ -50,7 +54,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Joesama\\Navigator\\": "vendor/joesama/navigator/"
         }
     },
     "minimum-stability": "dev",

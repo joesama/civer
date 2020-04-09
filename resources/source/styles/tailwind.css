@@ -38,7 +38,7 @@
 
 .civer-login-img{
     @apply object-center; 
-    @apply object-cover; 
+    @apply object-fill; 
     @apply h-full;
     @apply w-full; 
     @apply rounded-l-lg;
@@ -48,10 +48,8 @@
 }
 
 .civer-login-logo{
-    @apply w-48;
-    @apply h-48;
     @apply object-center; 
-    @apply object-cover; 
+    @apply object-scale-down; 
     @apply m-auto;
 }
 

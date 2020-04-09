@@ -2,38 +2,49 @@
 namespace App\Services;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Access Control & Menu Management.
  */
 class Access
 {
-    public function grantedTo($user)
+    /**
+     * List all access granted for authenticate user.
+     *
+     * @return void
+     */
+    public function grantedToUser()
     {
-        return Collection::make($this->adminMenu())->filter(function ($menu) use ($user) {
-            return true;
-        })->toArray();
+        return Collection::make($this->generalMenu())
+        ->merge($this->withAccess())
+        ->toArray();
     }
 
-    public function withAccess()
+    /**
+     * get all access checked.
+     *
+     * @return Collection
+     */
+    public function withAccess(): Collection
     {
+        return Collection::make($this->adminMenu())
+        ->filter(function ($contain, $menu) {
+            return Auth::check() ? Auth::user()->can($menu) : false;
+        });
     }
 
-    public function adminMenu()
+    /**
+     * Admin user menu.
+     *
+     * @return array
+     */
+    public function adminMenu(): array
     {
         return [
-            'home' => [
-                'title' => __('menu.home'),
-                'path' => '/home',
-                'icon' => 'columns',
-            ],
             'setting' => [
                 'title' => __('menu.setting'),
                 'sub' => [
-                    'acl' => [
-                        'title' => __('menu.acl'),
-                        'path' => '/acl'
-                    ],
                     'config' => [
                         'title' => __('menu.config'),
                         'path' => '/config'
@@ -44,12 +55,35 @@ class Access
         ];
     }
 
-    public function profileMenu()
+    /**
+     * General menu without access control.
+     *
+     * @return array
+     */
+    public function generalMenu(): array
+    {
+        return [
+            'home' => [
+                'title' => __('menu.home'),
+                'path' => '/home',
+                'icon' => 'home',
+            ],
+        ];
+    }
+
+    /**
+     * Menu to be display under profile.
+     *
+     * @return array
+     */
+    public function profileMenu(): array
     {
         return [
             'logout' => [
                 'title' => __('menu.logout'),
-                'path' => '/logout'
+                'path' => '/logout',
+                'icon' => 'sign-out-alt',
+                'method' => 'post'
             ]
         ];
     }

@@ -14,7 +14,7 @@
               <img
                 v-if="$page.site.logo !== undefined"
                 :src="$page.site.logo"
-                class="civer-login-logo"
+                class="civer-login-logo w-48 max-w-4x"
               />
               <h1
                 v-if="$page.site.logo === undefined"

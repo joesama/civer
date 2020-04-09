@@ -45,6 +45,6 @@ class ApplicationController extends Controller
             ]);
         }
 
-        return Redirect::route('config');
+        return Redirect::route('home');
     }
 }

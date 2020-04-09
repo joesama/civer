@@ -22,7 +22,7 @@ trait Authenticatable
      */
     public function login(Request $request)
     {
-        $credentials = $this->getCredentials($request);
+        $credentials = $this->getCredential($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -53,7 +53,7 @@ trait Authenticatable
      *
      * @return array
      */
-    protected function getCredentials(Request $request): array
+    protected function getCredential(Request $request): array
     {
         $credentials = [
             $this->username() => 'required|string',
