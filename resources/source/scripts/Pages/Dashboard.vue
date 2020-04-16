@@ -1,6 +1,10 @@
 <template>
   <layout>
-test
+    <div class="civer-info-grid">
+      <div class="civer-info-divider rounded-t-lg">
+        Dashboard
+      </div>
+    </div>
   </layout>
 </template>
 

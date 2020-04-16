@@ -1,6 +1,6 @@
 <template>
   <div class="inset-x-0 top-0 fixed bg-civer-dark-blue border-gold border-b-8 sm:flex sm:justify-between sm:items-between sm:px-4 sm:py-3 w-full z-30">
-    <div style="min-width:48;max-width: 120px; max-height: 36px;" class="pr-4 text-center">
+    <div style="width:48px; max-width:120px; max-height: 36px;" class="pr-4 text-center">
     <img
       v-if="$page.site.logo !== undefined"
       :src="$page.site.logo"
